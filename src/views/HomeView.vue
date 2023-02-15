@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MultistepForm from "@/components/MultistepForm.vue";
+</script>
 
 <template>
   <main>
-    <div>Home view</div>
+    <MultistepForm />
   </main>
 </template>

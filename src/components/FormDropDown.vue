@@ -59,7 +59,7 @@ const selected = ref(countries[0]);
             >
               <li
                 :class="[
-                  active ? 'text-white bg-indigo-600' : 'text-gray-900',
+                  active ? 'text-white bg-blue-600' : 'text-gray-900',
                   'relative cursor-default select-none py-2 pl-3 pr-9',
                 ]"
               >
@@ -81,7 +81,7 @@ const selected = ref(countries[0]);
                 <span
                   v-if="selected"
                   :class="[
-                    active ? 'text-white' : 'text-indigo-600',
+                    active ? 'text-white' : 'text-blue-600',
                     'absolute inset-y-0 right-0 flex items-center pr-4',
                   ]"
                 >

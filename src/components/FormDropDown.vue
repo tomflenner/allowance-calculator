@@ -10,7 +10,7 @@ import {
 } from "@headlessui/vue";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 type Props = {
-  currency: boolean;
+  isCurrencyDropDown: boolean;
 };
 const props = defineProps<Props>();
 const selected = ref(countries[0]);
@@ -22,14 +22,14 @@ const selected = ref(countries[0]);
       <div class="relative">
         <ListboxButton
           class="relative w-full border border-gray-300 py-2 pl-3 pr-10 shadow-sm sm:text-sm"
-          :class="props.currency ? 'rounded-l-lg' : 'rounded-md'"
+          :class="props.isCurrencyDropDown ? 'rounded-l-lg' : 'rounded-md'"
         >
           <span class="flex items-center">
             <span
               :class="selected.icon + ' h-6 w-6 flex-shrink-0 rounded-full'"
             ></span>
             <span class="ml-3 block truncate">{{
-              currency ? selected.currency : selected.name
+              isCurrencyDropDown ? selected.currency : selected.name
             }}</span>
           </span>
           <span
@@ -95,7 +95,7 @@ const selected = ref(countries[0]);
     </Listbox>
 
     <input
-      v-if="props.currency"
+      v-if="props.isCurrencyDropDown"
       class="border shadow-sm appearance-none rounded-r-lg w-full px-3 text-gray-700 leading-tight border-gray-300 bg-white focus:outline-none focus:shadow-outline"
       id="housingsupport"
       type="number"

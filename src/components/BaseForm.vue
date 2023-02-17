@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MultistepFormDropdown from "./FormDropDown.vue";
+import FormDropDown from "./FormDropDown.vue";
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import MultistepFormDropdown from "./FormDropDown.vue";
         >
           Sélectionner le pays de destination
         </label>
-        <MultistepFormDropdown :currency="false" />
+        <FormDropDown :is-currency-drop-down="false" />
       </div>
 
       <div class="mb-4">
@@ -25,7 +25,7 @@ import MultistepFormDropdown from "./FormDropDown.vue";
           Aide au logement
         </label>
 
-        <MultistepFormDropdown :currency="true" />
+        <FormDropDown :is-currency-drop-down="true" />
 
         <div class="flex items-center mb-2 mt-4">
           <input

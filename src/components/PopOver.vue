@@ -1,14 +1,6 @@
 <template>
-  <Popover
-    class="flex"
-    @mouseenter="open = true"
-    @mouseleave="open = false"
-    @click="open = !open"
-  >
-    <PopoverButton
-      @click="open = !open"
-      class="no-highlights-for-mobile-device focus:outline-none"
-    >
+  <Popover class="flex" v-slot="{ open }">
+    <PopoverButton class="no-highlights-for-mobile-device focus:outline-none">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -36,7 +28,7 @@
         v-if="open"
         class="absolute z-10 mt-5 max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl"
       >
-        <PopoverPanel static>
+        <PopoverPanel>
           <div class="rounded-md shadow-md bg-gray-100 p-8">
             Contenu du pop over
           </div>
@@ -54,6 +46,4 @@
 
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
-import { ref } from "vue";
-const open = ref(false);
 </script>

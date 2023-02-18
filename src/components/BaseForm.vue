@@ -21,8 +21,8 @@ const calculate = () => {
   >
     <AllowanceForm v-if="!showResult" :calculate="calculate" />
     <AllowanceResult v-if="showResult" :back="back" />
-    <p class="text-center text-xs">
-      &copy;2023 Tom Flenner. Tous droits réservés.
-    </p>
   </div>
+  <p class="text-center text-xs">
+    &copy;2023 Tom Flenner. Tous droits réservés.
+  </p>
 </template>

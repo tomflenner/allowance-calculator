@@ -44,8 +44,20 @@
   <div class="mt-8 text-xs text-gray-400">
     Taux de conversions applicables au 16/02/2023 à 22h51.
   </div>
+
+  <button
+    @click="back"
+    class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-auto mr-0"
+  >
+    Retour
+  </button>
 </template>
 
 <script setup lang="ts">
 import PopOver from "./PopOver.vue";
+type Props = {
+  back: () => void;
+};
+
+defineProps<Props>();
 </script>

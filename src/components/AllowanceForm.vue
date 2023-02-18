@@ -27,6 +27,7 @@
   </div>
 
   <button
+    @click="calculate"
     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-auto mr-0"
   >
     Calculer
@@ -35,4 +36,8 @@
 
 <script setup lang="ts">
 import FormDropDown from "./FormDropDown.vue";
+type Props = {
+  calculate: () => void;
+};
+defineProps<Props>();
 </script>

@@ -5,7 +5,10 @@
     @mouseleave="open = false"
     @click="open = !open"
   >
-    <PopoverButton class="focus:outline-none" @click="open = !open">
+    <PopoverButton
+      @click="open = !open"
+      class="no-highlights-for-mobile-device focus:outline-none"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -29,8 +32,11 @@
       leave-from-class="translate-y-0 opacity-100"
       leave-to-class="translate-y-1 opacity-0"
     >
-      <div v-if="open" class="absolute translate-x-5">
-        <PopoverPanel static class="max-w-sm">
+      <div
+        v-if="open"
+        class="absolute z-10 mt-5 max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl"
+      >
+        <PopoverPanel static>
           <div class="rounded-md shadow-md bg-gray-100 p-8">
             Contenu du pop over
           </div>
@@ -39,6 +45,12 @@
     </transition>
   </Popover>
 </template>
+
+<style>
+.no-highlights-for-mobile-device {
+  -webkit-tap-highlight-color: transparent;
+}
+</style>
 
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";

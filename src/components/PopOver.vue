@@ -26,11 +26,11 @@
     >
       <div
         v-if="open"
-        class="absolute z-10 mt-5 max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl"
+        class="absolute z-10 mt-5 -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl"
       >
         <PopoverPanel>
-          <div class="rounded-md shadow-md bg-gray-100 p-8">
-            Contenu du pop over
+          <div class="rounded-md shadow-md text-xs bg-gray-100 p-8">
+            {{ content }}
           </div>
         </PopoverPanel>
       </div>
@@ -46,4 +46,8 @@
 
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
+type Props = {
+  content: string;
+};
+defineProps<Props>();
 </script>

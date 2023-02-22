@@ -1,12 +1,12 @@
 <template>
   <div class="space-y-2">
     <div class="flex justify-between space-x-12">
-      <span class="font-semibold">Indemnité fixe</span>
+      <span>Indemnité fixe</span>
       <span>723,99 EUR</span>
     </div>
 
     <div class="flex justify-between space-x-12">
-      <span class="font-semibold">+ Indemnité geographique</span>
+      <span>+ Indemnité geographique</span>
       <span>1 538,30 EUR</span>
     </div>
 
@@ -16,9 +16,9 @@
     </div>
 
     <div class="flex justify-between space-x-12">
-      <span class="font-semibold">+ Aide au logement</span>
+      <span>+ Aide au logement</span>
       <div class="flex items-center">
-        <PopOver />
+        <PopOver content="Conversion effectuée avec un taux CAD/EUR à 0,74" />
         <span>624,45 EUR</span>
       </div>
     </div>
@@ -35,13 +35,13 @@
     <div class="flex justify-between space-x-12">
       <span class="font-bold">Total en CAD</span>
       <div class="flex items-center">
-        <PopOver />
+        <PopOver content="Conversion effectuée avec un taux EUR/CAD à 1,44" />
         <span>3 510 CAD</span>
       </div>
     </div>
   </div>
 
-  <div class="mt-8 text-xs text-gray-400">
+  <div class="mt-8 mb-4 text-xs text-gray-400">
     Taux de conversions applicables au 16/02/2023 à 22h51.
   </div>
 

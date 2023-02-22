@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "/node_modules/flag-icons/css/flag-icons.min.css";
-import { countries } from "../datas/countries";
+import { countries } from "@/datas/countries";
 import { ref, defineProps } from "vue";
 import {
   Listbox,

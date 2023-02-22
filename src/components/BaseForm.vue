@@ -17,7 +17,7 @@ const calculate = () => {
 
 <template>
   <div
-    class="w-full max-w-fit bg-white shadow-md truncate flex flex-col rounded-md px-8 pt-6 pb-8 mb-4 mt-4"
+    class="w-full max-w-fit bg-white shadow-md flex flex-col rounded-md px-8 pt-6 pb-8 mb-4 mt-4"
   >
     <AllowanceForm v-if="!showResult" :calculate="calculate" />
     <AllowanceResult v-if="showResult" :back="back" />

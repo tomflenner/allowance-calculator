@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import "/node_modules/flag-icons/css/flag-icons.min.css";
-import { countries } from "@/datas/countries";
-import { ref, defineProps } from "vue";
 import {
   Listbox,
   ListboxButton,
@@ -9,11 +7,28 @@ import {
   ListboxOptions,
 } from "@headlessui/vue";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
+import { useAllowancesStore, type Allowance } from "@/stores/allowances";
+import { computed } from "vue";
+
 type Props = {
   isCurrencyDropDown: boolean;
 };
+
 const props = defineProps<Props>();
-const selected = ref(countries[0]);
+const store = useAllowancesStore();
+const allowances = computed(() => store.state.allowances);
+const selected = computed({
+  get() {
+    return props.isCurrencyDropDown
+      ? store.state.selectedHousingSupport
+      : store.state.selectedAllowance;
+  },
+  set(selected) {
+    props.isCurrencyDropDown
+      ? store.setSelectedHousingSupport(selected as Allowance)
+      : store.setSelectedAllowance(selected as Allowance);
+  },
+});
 </script>
 
 <template>
@@ -26,10 +41,14 @@ const selected = ref(countries[0]);
         >
           <span class="flex items-center">
             <span
-              :class="selected.icon + ' h-6 w-6 flex-shrink-0 rounded-full'"
+              :class="
+                selected?.countryIcon + ' h-6 w-6 flex-shrink-0 rounded-full'
+              "
             ></span>
             <span class="ml-3 block truncate">{{
-              isCurrencyDropDown ? selected.currency : selected.name
+              isCurrencyDropDown
+                ? selected?.countryCurrencyCode
+                : selected?.countryName
             }}</span>
           </span>
           <span
@@ -52,9 +71,9 @@ const selected = ref(countries[0]);
           >
             <ListboxOption
               as="template"
-              v-for="country in countries"
-              :key="country.id"
-              :value="country"
+              v-for="allowance in allowances"
+              :key="allowance.countryCode"
+              :value="allowance"
               v-slot="{ active, selected }"
             >
               <li
@@ -66,7 +85,8 @@ const selected = ref(countries[0]);
                 <div class="flex items-center">
                   <span
                     :class="
-                      country.icon + ' h-6 w-6 flex-shrink-0 rounded-full'
+                      allowance.countryIcon +
+                      ' h-6 w-6 flex-shrink-0 rounded-full'
                     "
                   ></span>
                   <span
@@ -74,7 +94,7 @@ const selected = ref(countries[0]);
                       selected ? 'font-semibold' : 'font-normal',
                       'ml-3 block truncate',
                     ]"
-                    >{{ country.name }}</span
+                    >{{ allowance.countryName }}</span
                   >
                 </div>
 

@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useAllowancesStore } from "@/stores/allowances";
+import axios from "axios";
+import { onMounted, ref } from "vue";
 import AllowanceForm from "./AllowanceForm.vue";
 import AllowanceResult from "./AllowanceResult.vue";
 
 const showResult = ref(false);
 
 const back = () => {
+  console.log("going back...");
   showResult.value = false;
 };
 
@@ -13,6 +16,24 @@ const calculate = () => {
   console.log("doing calculation...");
   showResult.value = true;
 };
+
+const store = useAllowancesStore();
+
+const fetchAllowanceDoc = () => {
+  axios
+    .get("https://allowanceextractor.azurewebsites.net/api/AllowanceExtractor")
+    .then((response) => {
+      store.setDocumentDate(response.data.documentDate);
+      store.setAllowances(response.data.allowances);
+      store.setSelectedAllowance(response.data.allowances[0]);
+      store.setSelectedHousingSupport(response.data.allowances[0]);
+    })
+    .catch((error) => {
+      console.log("ERROR: " + error);
+    });
+};
+
+onMounted(fetchAllowanceDoc);
 </script>
 
 <template>

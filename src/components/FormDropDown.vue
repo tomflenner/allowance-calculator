@@ -36,7 +36,7 @@ const selected = computed({
     <Listbox as="div" v-model="selected" class="w-full">
       <div class="relative">
         <ListboxButton
-          class="relative w-full border border-gray-300 py-2 pl-3 pr-10 shadow-sm sm:text-sm"
+          class="relative w-full max-w-xs border border-gray-300 py-2 pl-3 pr-10 shadow-sm sm:text-sm"
           :class="props.isCurrencyDropDown ? 'rounded-l-lg' : 'rounded-md'"
         >
           <span class="flex items-center">
@@ -92,7 +92,7 @@ const selected = computed({
                   <span
                     :class="[
                       selected ? 'font-semibold' : 'font-normal',
-                      'ml-3 block truncate',
+                      'ml-3 block',
                     ]"
                     >{{ allowance.countryName }}</span
                   >

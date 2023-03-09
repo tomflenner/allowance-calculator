@@ -6,6 +6,7 @@ export type AllowanceStoreState = {
   allowances: Allowance[];
   selectedAllowance: Allowance | undefined;
   selectedHousingSupport: Allowance | undefined;
+  housingSupportValue: number;
 };
 
 export type Allowance = {
@@ -23,6 +24,7 @@ export const useAllowancesStore = defineStore("allowances", () => {
     allowances: [],
     selectedAllowance: undefined,
     selectedHousingSupport: undefined,
+    housingSupportValue: 0,
   });
 
   const setDocumentDate = (documentDate: Date): void => {
@@ -43,11 +45,16 @@ export const useAllowancesStore = defineStore("allowances", () => {
     state.selectedHousingSupport = selectedHousingSupport;
   };
 
+  const setHousingSupportValue = (housingSupport: number): void => {
+    state.housingSupportValue = housingSupport;
+  };
+
   return {
     state,
     setDocumentDate,
     setAllowances,
     setSelectedAllowance,
     setSelectedHousingSupport,
+    setHousingSupportValue,
   };
 });

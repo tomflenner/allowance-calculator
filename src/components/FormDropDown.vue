@@ -15,6 +15,7 @@ type Props = {
 };
 
 const props = defineProps<Props>();
+
 const store = useAllowancesStore();
 const allowances = computed(() => store.state.allowances);
 const selected = computed({
@@ -29,6 +30,11 @@ const selected = computed({
       : store.setSelectedAllowance(selected as Allowance);
   },
 });
+
+const handleInput = (event: Event) => {
+  const value = (event.target as HTMLInputElement).value;
+  store.setHousingSupportValue(parseFloat(value));
+};
 </script>
 
 <template>
@@ -119,7 +125,8 @@ const selected = computed({
       class="border shadow-sm appearance-none rounded-r-lg w-full px-3 text-gray-700 leading-tight border-gray-300 bg-white focus:outline-none focus:shadow-outline"
       id="housingsupport"
       type="number"
-      value="0"
+      :value="store.state.housingSupportValue"
+      @input="handleInput"
     />
   </div>
 </template>

@@ -125,8 +125,7 @@ const handleInput = (event: Event) => {
       class="border shadow-sm appearance-none rounded-r-lg w-full px-3 text-gray-700 leading-tight border-gray-300 bg-white focus:outline-none focus:shadow-outline"
       id="housingsupport"
       type="number"
-      :value="store.state.housingSupportValue"
-      @input="handleInput"
+      v-model="store.state.housingSupportValue"
     />
   </div>
 </template>

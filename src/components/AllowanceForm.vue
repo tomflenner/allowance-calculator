@@ -44,7 +44,7 @@
 button[disabled] {
   pointer-events: none;
   background-color: lightgray;
-  color: black;
+  color: gray;
 }
 </style>
 

@@ -88,31 +88,64 @@ const handleInput = (event: Event) => {
                   'relative cursor-default select-none py-2 pl-3 pr-9',
                 ]"
               >
-                <div class="flex items-center">
-                  <span
-                    :class="
-                      allowance.countryIcon +
-                      ' h-6 w-6 flex-shrink-0 rounded-full'
-                    "
-                  ></span>
-                  <span
-                    :class="[
-                      selected ? 'font-semibold' : 'font-normal',
-                      'ml-3 block',
-                    ]"
-                    >{{ allowance.countryName }}</span
-                  >
-                </div>
+                <template v-if="isCurrencyDropDown">
+                  <div class="flex items-center">
+                    <span
+                      :class="
+                        allowance.countryIcon +
+                        ' h-6 w-6 flex-shrink-0 rounded-full'
+                      "
+                    ></span>
+                    <span
+                      :class="[
+                        selected ? 'font-semibold' : 'font-normal',
+                        'ml-3 block',
+                      ]"
+                      >{{ allowance.countryCurrencyCode }}</span
+                    >
+                  </div>
 
-                <span
-                  v-if="selected"
-                  :class="[
-                    active ? 'text-white' : 'text-blue-600',
-                    'absolute inset-y-0 right-0 flex items-center pr-4',
-                  ]"
-                >
-                  <CheckIcon class="h-5 w-5" aria-hidden="true" />
-                </span>
+                  <span class="text-xs text-gray-400">{{
+                    allowance.countryName
+                  }}</span>
+                  <span
+                    v-if="selected"
+                    :class="[
+                      active ? 'text-white' : 'text-blue-600',
+                      'absolute inset-y-0 right-0 flex items-center pr-4',
+                    ]"
+                  >
+                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                  </span>
+                </template>
+
+                <template v-else>
+                  <div class="flex items-center">
+                    <span
+                      :class="
+                        allowance.countryIcon +
+                        ' h-6 w-6 flex-shrink-0 rounded-full'
+                      "
+                    ></span>
+                    <span
+                      :class="[
+                        selected ? 'font-semibold' : 'font-normal',
+                        'ml-3 block',
+                      ]"
+                      >{{ allowance.countryName }}</span
+                    >
+                  </div>
+
+                  <span
+                    v-if="selected"
+                    :class="[
+                      active ? 'text-white' : 'text-blue-600',
+                      'absolute inset-y-0 right-0 flex items-center pr-4',
+                    ]"
+                  >
+                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                  </span>
+                </template>
               </li>
             </ListboxOption>
           </ListboxOptions>

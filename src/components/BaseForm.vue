@@ -8,12 +8,10 @@ import AllowanceResult from "./AllowanceResult.vue";
 const showResult = ref(false);
 
 const back = () => {
-  console.log("going back...");
   showResult.value = false;
 };
 
 const calculate = () => {
-  console.log("doing calculation...");
   showResult.value = true;
 };
 
@@ -37,6 +35,12 @@ onMounted(fetchAllowanceDoc);
 </script>
 
 <template>
+  <h1
+    class="mb-4 text-2xl font-extrabold leading-none text-gray-700 tracking-tight 900 text-center"
+  >
+    Calcul d'indémnités V.I.E
+  </h1>
+
   <div
     class="w-full max-w-fit bg-white shadow-md flex flex-col rounded-md px-8 pt-6 pb-8 mb-4 mt-4"
   >
